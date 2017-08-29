@@ -9,9 +9,8 @@ use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Utils\View\Model\XmlModel;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
-use Thapp\XmlBuilder\XMLBuilder;
-use Thapp\XmlBuilder\Normalizer;
 
 class HighlightsController extends AbstractActionController
 {
@@ -200,7 +199,7 @@ class HighlightsController extends AbstractActionController
             else
                 $image = substr($_SERVER['DOCUMENT_ROOT'],0 , -7) . '/data/uploads/highlights/middle/' . $entity->getImage();
 
-            $data[$key] = array(
+            $data['item'][$key] = array(
                 'button' => array(
                     'label' => $entity->getLabel(),
                     'date' => $entity->getCreatedAt()->format('Y-m-d H:i'),
@@ -212,29 +211,15 @@ class HighlightsController extends AbstractActionController
                     ),
                     'midia' => array(
                         'images' => array(
-                            $image
+                            'image' => $image
                         )
                     )
                 ),
             );
         }
 
-        $xmlBuilder = new XmlBuilder('root');
-        $xmlBuilder->setSingularizer(function ($name) {
-            if ('images' === $name) {
-                return 'image';
-            }
+        return new XmlModel($data);
 
-            return $name;
-        });
-        $xmlBuilder->load($data);
-        $xml_output = $xmlBuilder->createXML(true);
-
-        $response = $this->getResponse();
-        $response->getHeaders()->addHeaderLine('Content-Type', 'text/xml; charset=utf-8');
-        $response->setContent($xml_output);
-
-        return $response;
     }
 
     /**

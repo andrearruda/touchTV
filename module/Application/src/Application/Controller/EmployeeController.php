@@ -10,9 +10,8 @@ use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Utils\View\Model\XmlModel;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
-use Thapp\XmlBuilder\XMLBuilder;
-use Thapp\XmlBuilder\Normalizer;
 
 class EmployeeController extends AbstractActionController
 {
@@ -326,7 +325,7 @@ class EmployeeController extends AbstractActionController
             $entities = $this->getEmployeeService()->findByMonth($i);
             foreach($entities as $k => $entity)
             {
-                $container[$k] = array(
+                $container['item'][$k] = array(
                     'name' => $entity->getName(),
                     'bornat' => $entity->getBornAt()->format('Y-m-d'),
                     'unity' => $entity->getEmployeeUnit()->getName(),
@@ -335,7 +334,7 @@ class EmployeeController extends AbstractActionController
                 );
             }
 
-            $data[$ac] = array(
+            $data['item'][$ac] = array(
                 'button' => array(
                     'label' => $month
                 ),
@@ -345,22 +344,7 @@ class EmployeeController extends AbstractActionController
             $ac++;
         }
 
-        $xmlBuilder = new XmlBuilder('root');
-        $xmlBuilder->setSingularizer(function ($name) {
-            if ('containers' === $name) {
-                return 'item';
-            }
-
-            return $name;
-        });
-        $xmlBuilder->load($data);
-        $xml_output = $xmlBuilder->createXML(true);
-
-        $response = $this->getResponse();
-        $response->getHeaders()->addHeaderLine('Content-Type', 'text/xml; charset=utf-8');
-        $response->setContent($xml_output);
-
-        return $response;
+        return new XmlModel($data);
     }
 
     /**

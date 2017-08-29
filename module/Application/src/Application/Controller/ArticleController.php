@@ -11,8 +11,6 @@ use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Utils\View\Model\XmlModel;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
-use Thapp\XmlBuilder\XMLBuilder;
-use Thapp\XmlBuilder\Normalizer;
 
 class ArticleController extends AbstractActionController
 {
@@ -201,7 +199,7 @@ class ArticleController extends AbstractActionController
             else
                 $image = substr($_SERVER['DOCUMENT_ROOT'],0 , -7) . '/data/uploads/article/middle/' . $entity->getImage();
 
-            $data[$key] = array(
+            $data['item'][$key] = array(
                 'button' => array(
                     'label' => $entity->getLabel(),
                     'date' => $entity->getCreatedAt()->format('Y-m-d H:i'),
@@ -213,29 +211,14 @@ class ArticleController extends AbstractActionController
                     ),
                     'midia' => array(
                         'images' => array(
-                            $image
+                            'image' => $image
                         )
                     )
                 ),
             );
         }
 
-        $xmlBuilder = new XmlBuilder('root');
-        $xmlBuilder->setSingularizer(function ($name) {
-            if ('images' === $name) {
-                return 'image';
-            }
-
-            return $name;
-        });
-        $xmlBuilder->load($data);
-        $xml_output = $xmlBuilder->createXML(true);
-
-        $response = $this->getResponse();
-        $response->getHeaders()->addHeaderLine('Content-Type', 'text/xml; charset=utf-8');
-        $response->setContent($xml_output);
-
-        return $response;
+        return new XmlModel($data);
     }
 
     /**

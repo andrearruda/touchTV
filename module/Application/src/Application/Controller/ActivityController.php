@@ -208,7 +208,7 @@ class ActivityController extends AbstractActionController
                     ),
                     'midia' => array(
                         'images' => array(
-                            $image
+                            'image' => $image
                         )
                     )
                 )
