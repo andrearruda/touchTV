@@ -9,9 +9,8 @@ use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Utils\View\Model\XmlModel;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
-use Thapp\XmlBuilder\XMLBuilder;
-use Thapp\XmlBuilder\Normalizer;
 
 class ItineraryController extends AbstractActionController
 {
@@ -191,7 +190,7 @@ class ItineraryController extends AbstractActionController
 
             foreach($entities_itinerary as $i => $itinerary)
             {
-                $container[$i] = array(
+                $container['item'][$i] = array(
                     'schedule' => $itinerary->getSchedule() . ' hr',
                     'stop' => $itinerary->getStop(),
                     'reference' => $itinerary->getReference(),
@@ -200,31 +199,20 @@ class ItineraryController extends AbstractActionController
                 );
             }
 
-            $data[$key] = array(
+            $data['item'][$key] = array(
                 'button' => array(
                     'label' => $routes->getName(),
                     'name' => $routes->getTrajectory()
-                ),
-                'containers' => $container
+                )
             );
+
+            if(count($container) > 0)
+            {
+                $data['item'][$key]['containers'] = $container;
+            }
         }
 
-        $xmlBuilder = new XmlBuilder('root');
-        $xmlBuilder->setSingularizer(function ($name) {
-            if ('containers' === $name) {
-                return 'item';
-            }
-
-            return $name;
-        });
-        $xmlBuilder->load($data);
-        $xml_output = $xmlBuilder->createXML(true);
-
-        $response = $this->getResponse();
-        $response->getHeaders()->addHeaderLine('Content-Type', 'text/xml; charset=utf-8');
-        $response->setContent($xml_output);
-
-        return $response;
+        return new XmlModel($data);
     }
 
     /**
