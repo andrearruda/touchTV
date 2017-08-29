@@ -1,0 +1,80 @@
+<?php
+    $this->headScript()
+        ->prependFile($this->basePath('/assets/js/pages/itinerary.form.js'))
+        ->prependFile($this->basePath('/assets/materialadmin/assets/js/libs/inputmask/jquery.inputmask.bundle.min.js'));
+?>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group<?php if($this->formElementErrors($form->get('itineraryRoute'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('itineraryRoute')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('itineraryRoute')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('itineraryRoute')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group<?php if($this->formElementErrors($form->get('schedule'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('schedule')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('schedule')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('schedule')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="form-group<?php if($this->formElementErrors($form->get('stop'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('stop')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('stop')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('stop')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group<?php if($this->formElementErrors($form->get('neighborhood'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('neighborhood')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('neighborhood')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('neighborhood')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="form-group<?php if($this->formElementErrors($form->get('reference'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('reference')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('reference')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('reference')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group<?php if($this->formElementErrors($form->get('itineraryCity'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('itineraryCity')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('itineraryCity')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('itineraryCity')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>

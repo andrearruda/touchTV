@@ -1,0 +1,43 @@
+<?php
+/**
+ * @var $fieldset_scheduling \Application\Fieldset\SchedulingFieldset
+ */
+$fieldset_scheduling = $form->getFieldsets()['fieldset_scheduling'];
+
+$this->headLink()->prependStylesheet($this->basePath('/assets/css/schedule_fieldset.form.css'));
+$this->headScript()->prependFile($this->basePath('/assets/js/schedule_fieldset.form.js'));
+?>
+<div class="range">
+    <div class="range-start">
+        <?php echo $this->formElement($fieldset_scheduling->get('schedulingStart')) . PHP_EOL;?>
+<?php
+    if(count($fieldset_scheduling->get('schedulingStart')->getMessages())):
+?>
+        <div class="form-group<?php if($this->formElementErrors($fieldset_scheduling->get('schedulingStart'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($fieldset_scheduling->get('schedulingStart')) . PHP_EOL; ?>
+        </div>
+<?php
+    endif;
+?>
+    </div>
+    <div class="range-end">
+        <?php echo $this->formElement($fieldset_scheduling->get('schedulingEnd')) . PHP_EOL;?>
+<?php
+    if(count($fieldset_scheduling->get('schedulingStart')->getMessages())):
+?>
+        <div class="form-group<?php if($this->formElementErrors($fieldset_scheduling->get('schedulingEnd'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($fieldset_scheduling->get('schedulingEnd')) . PHP_EOL; ?>
+        </div>
+<?php
+    endif;
+?>
+    </div>
+</div>

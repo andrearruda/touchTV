@@ -1,0 +1,67 @@
+<?php
+$this->headTitle('Itinerário')->prepend('Deletar');
+?>
+<script type="text/javascript" src="<?php echo $this->basePath('/assets/js/delete_form_common.js');?>"></script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $this->headTitle()->setSeparator(' / ')->renderTitle();?></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="info">
+                            <div class="info-head">
+                                <h5>Controle</h5>
+                            </div>
+                            <div class="info-body">
+                                <span class="date">Criado em: <span><?php echo $this->dateFormat($entity->getCreatedAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'pt_BR');?></span></span> <br />
+                                <span class="date">Atualizado em: <span><?php echo $this->dateFormat($entity->getUpdatedAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'pt_BR');?></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getSchedule();?> hr</div>
+                        <label>Horário</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getItineraryRoute()->getName();?> - <?php echo $entity->getItineraryRoute()->getTrajectory();?></div>
+                        <label>Rota</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getStop();?></div>
+                        <label>Ponto</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getReference();?></div>
+                        <label>Referência</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getNeighborhood();?></div>
+                        <label>Bairo</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getItineraryCity()->getName();?></div>
+                        <label>Cidade</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-raised bt_modal_action_delete" data-url="<?php echo $this->url('itinerary/default', array('action' => 'delete', 'id' => $entity->getId()));?>" data-toggle="tooltip" title="Ao excluir não será possivel recuperar.">Deletar</button>
+                <button type="button" class="btn btn-default btn-raised" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

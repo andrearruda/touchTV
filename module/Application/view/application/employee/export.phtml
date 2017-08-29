@@ -1,0 +1,70 @@
+<?php
+$this->headTitle('Colaboradores')->prepend('Exportar');
+?>
+<script type="text/javascript" src="/assets/js/pages/employee.export.form.js"></script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $this->headTitle()->setSeparator(' / ')->renderTitle();?></h4>
+            </div>
+            <?php echo $this->form()->openTag($form->setAttribute('action', $this->url('employee/default', array('action' => 'export')))) . PHP_EOL; ?>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group<?php if($this->formElementErrors($form->get('startedIn'))):?> has-error<?php endif;?>">
+                            <?php echo $this->formElement($form->get('startedIn')) . PHP_EOL;?>
+                            <?php echo $this->formElementErrors()
+                                    ->setMessageOpenFormat('<span class="help-block">')
+                                    ->setMessageSeparatorString('</span><span class="help-block">')
+                                    ->setMessageCloseString('</span>')
+                                    ->render($form->get('startedIn')) . PHP_EOL; ?>
+                            <?php echo $this->formLabel($form->get('startedIn')) . PHP_EOL; ?>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group<?php if($this->formElementErrors($form->get('finalizedIn'))):?> has-error<?php endif;?>">
+                            <?php echo $this->formElement($form->get('finalizedIn')) . PHP_EOL;?>
+                            <?php echo $this->formElementErrors()
+                                    ->setMessageOpenFormat('<span class="help-block">')
+                                    ->setMessageSeparatorString('</span><span class="help-block">')
+                                    ->setMessageCloseString('</span>')
+                                    ->render($form->get('finalizedIn')) . PHP_EOL; ?>
+                            <?php echo $this->formLabel($form->get('finalizedIn')) . PHP_EOL; ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <dl>
+                            <dt>Todos os registros</dt>
+                            <dd class="text-xs">Deixe os campos de filtro em brancos.</dd>
+
+                            <dt>Determinado periodo</dt>
+                            <dd class="text-xs">Preencha os dois campos "<em>Início</em>" e "<em>Fim</em>" de filtro.</dd>
+
+                            <dt>Apartir de uma determinada data</dt>
+                            <dd class="text-xs">Preencha apenas o campo "<em>Início</em>" de filtro.</dd>
+
+                            <dt>Até uma determinada data</dt>
+                            <dd class="text-xs">Preencha apenas o campo "<em>Fim</em>" de filtro.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->form()->closeTag() . PHP_EOL; ?>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-raised bt_submit_form" data-dismiss="modal">Exportar</button>
+                <button type="button" class="btn btn-default btn-raised" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

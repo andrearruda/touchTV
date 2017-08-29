@@ -1,0 +1,67 @@
+<?php
+$this->headTitle('Colaboradores')->prepend('Exibir');
+?>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $this->headTitle()->setSeparator(' / ')->renderTitle();?></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="info">
+                            <div class="info-head">
+                                <h5>Controle</h5>
+                            </div>
+                            <div class="info-body">
+                                <span class="date">Criado em: <span><?php echo $this->dateFormat($entity->getCreatedAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'pt_BR');?></span></span> <br />
+                                <span class="date">Atualizado em: <span><?php echo $this->dateFormat($entity->getUpdatedAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'pt_BR');?></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $this->dateFormat($entity->getBornAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'pt_BR');?></div>
+                        <label>Nascido</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getName();?></div>
+                        <label>Nome</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getDepartment();?></div>
+                        <label>Departamento</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control"><?php echo $entity->getEmployeeUnit()->getName();?></div>
+                        <label>Unidade</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control">
+                            <?php if(!empty($entity->getImage())){?>
+                                <div class="img_show"><img src="<?php echo $this->basePath('upload/images/employee/middle/' . $entity->getImage());?>" class="center-block img-responsive" /></div>
+                            <?php }else{ ?>
+                                <i>Não há imagem.</i>
+                            <?php } ?>
+                        </div>
+                        <label>Imagem</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-raised" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

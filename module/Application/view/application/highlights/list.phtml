@@ -1,0 +1,71 @@
+<?php
+$this->headTitle('Destaques')->prepend('Listar');
+
+$this->headLink()->prependStylesheet($this->basePath('/assets/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css'));
+$this->headLink()->prependStylesheet($this->basePath('/assets/css/list_table_common.css'));
+$this->headLink()->prependStylesheet($this->basePath('/assets/css/modal.css'));
+$this->headScript()->prependFile($this->basePath('/assets/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js'));
+$this->headScript()->prependFile($this->basePath('/assets/js/list_table_common.js'));
+
+$this->headScript()->prependFile($this->basePath('/assets/js/jquery.swfobject.1-1-1.min.js'));
+?>
+<section>
+    <div class="section-header">
+        <?php echo $this->navigation('navigation')->breadcrumbs()->setPartial('partials/navigation/breadcrumb.phtml'); ?>
+    </div><!--end .section-header -->
+</section>
+
+<section class="style-default-bright">
+    <div class="section-body">
+        <div class="bar_action_button">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a href="<?php echo $this->url('highlights/default', array('action' => 'add'));?>" class="btn btn-primary ink-reaction btn-raised">Adicionar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php if(count($this->data) > 0):?>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th width="80">Ativo</th>
+                    <th class="hidden-xs">Label</th>
+                    <th>Titulo</th>
+                    <th class="text-right">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($this->data as $entity):?>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="active" data-size="mini" data-url="<?php echo $this->url('highlights/default', array('action' => 'active', 'id' => $entity->getId()));?>" value="<?php echo $entity->getId();?>"<?php if($entity->getActive() == '1'){ echo ' checked="checked"'; }?>>
+                        </td>
+                        <td class="hidden-xs">
+                            <?php echo $entity->getLabel() . PHP_EOL;?>
+                        </td>
+                        <td>
+                            <?php echo $entity->getTitle() . PHP_EOL;?>
+                        </td>
+                        <td class="text-right">
+                            <button type="button" class="btn btn-primary-bright ink-reaction bt_modal_action" data-toggle="tooltip" data-placement="top" data-original-title="Exibir" data-url="<?php echo $this->url('highlights/default', array('action' => 'show', 'id' => $entity->getId()));?>"><i class="fa fa-search"></i></button>
+                            <a href="<?php echo $this->url('highlights/default', array('action' => 'edit', 'id' => $entity->getId()));?>" class="btn btn-primary-bright ink-reaction bt_modal_action" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="fa fa-pencil"></i></a>
+                            <button type="button" class="btn btn-primary-bright ink-reaction bt_modal_action" data-toggle="tooltip" data-placement="top" data-original-title="Deletar" data-url="<?php echo $this->url('highlights/default', array('action' => 'delete', 'id' => $entity->getId()));?>"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                <?php endforeach;?>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-lg-12">
+                    <?php echo $this->paginationControl($this->data, 'Sliding', 'partials/layout/paginator');?>
+                </div>
+            </div>
+            <?php
+        else:
+            echo $this->partial('partials/layout/no_records.phtml');
+        endif;
+        ?>
+    </div>
+</section>

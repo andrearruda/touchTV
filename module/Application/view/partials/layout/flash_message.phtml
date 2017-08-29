@@ -1,0 +1,53 @@
+<?php
+$flashMessage = $this->flashMessenger()->getMessages();
+if(count($flashMessage)):
+?>
+<!-- BEGIN FLASHMESSENGER-->
+<script type="text/javascript">
+$(function() {
+    function Toast(type, css, msg, title)
+    {
+        this.type = type;
+        this.css = css;
+        this.msg = msg;
+        this.title = title;
+    }
+
+    var toasts = [
+<?php foreach($flashMessage as $msg):?>
+        new Toast('<?php echo $msg['type'];?>', 'toast-bottom-right', '<?php echo $msg['message'];?>', '<?php echo $msg['title'];?>'),
+<?php endforeach;?>
+    ];
+
+    var i = 0;
+
+    delayToasts();
+
+    function delayToasts()
+    {
+        if (i === toasts.length)
+        {
+            return;
+        }
+
+        var delay = i === 0 ? 0 : 3000;
+        window.setTimeout(function () {
+            showToast();
+        }, delay);
+    }
+
+    function showToast()
+    {
+        var t = toasts[i];
+        toastr.options.positionClass = t.css;
+        toastr[t.type](t.msg, t.title);
+        i++;
+
+        delayToasts();
+    }
+});
+</script>
+<!-- END FLASHMESSENGER-->
+<?php
+endif;
+?>

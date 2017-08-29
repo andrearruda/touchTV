@@ -1,0 +1,52 @@
+<?php
+$this->headTitle('Cursos e Treinamentos')->prepend('Adicionar');
+
+$form = $this->form;
+$form->prepare();
+?>
+<section>
+    <div class="section-header">
+        <?php echo $this->navigation('navigation')->breadcrumbs()->setPartial('partials/navigation/breadcrumb.phtml'); ?>
+    </div><!--end .section-header -->
+</section>
+<section>
+    <div class="section-body">
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $this->form()->openTag($form) . PHP_EOL; ?>
+                <?php echo $this->formElement($form->get('csrf')) . PHP_EOL;?>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <?php echo $this->partial('application/activity/form.partials.phtml');?>
+
+                            </div><!--end .card-body -->
+                        </div><!--end .card -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-underline">
+                            <div class="card-head style-primary">
+                                <header>Agendamento</header>
+                            </div>
+                            <div class="card-body">
+
+                                <?php echo $this->partial('partials/fieldset.scheduling.phtml');?>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn ink-reaction btn-primary btn-raised">Salvar</button>
+                    </div>
+                </div>
+
+                <?php echo $this->form()->closeTag() . PHP_EOL; ?>
+            </div>
+        </div>
+    </div>
+</section>

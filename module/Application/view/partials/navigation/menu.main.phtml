@@ -1,0 +1,65 @@
+<?php
+/**
+ * @var $container Zend\Navigation\Navigation
+ * @var $page Zend\Navigation\Page\Mvc
+ */
+$container = $this->container;
+?>
+                <ul id="main-menu" class="gui-controls">
+<?php  foreach ($container as $page): ?>
+    <?php if($page->get('show_in_menu') !== false): ?>
+                    <!-- BEGIN <?php echo strtoupper($page->getRoute());?> -->
+        <?php if (!$page->hasPages()): ?>
+                    <li<?php if ($page->isActive()) echo ' class="active expanded"'; ?>>
+                        <a href="<?php echo $page->getHref(); ?>">
+            <?php if ($page->get('icon') !== ''): ?>
+                            <div class="gui-icon"><i class="<?php echo $page->get('icon'); ?>"></i></div>
+            <?php endif; ?>
+                            <span class="title"><?php echo $page->getLabel();?></span>
+                        </a>
+                    </li><!--end /menu-li -->
+        <?php else: ?>
+                    <li class="gui-folder<?php if ($page->isActive(true)) echo ' active expanded' ?>">
+                        <a href="javascript:void(0);">
+            <?php if ($page->get('icon') !== ''): ?>
+                            <div class="gui-icon"><span class="<?php echo $page->get('icon'); ?>"></span></div>
+            <?php endif; ?>
+                            <span class="title"><?php echo $page->getLabel();?></span>
+                        </a>
+                        <ul>
+            <?php foreach ($page->getPages() as $child): ?>
+                <?php if($child->get('show_in_menu') !== false):?>
+                    <?php if (!$child->hasPages()):?>
+                            <li<?php if ($child->isActive()) echo ' class="active expanded"' ?>>
+                                <a href="<?php echo $child->getHref() ?>">
+                                    <span class="title"><?php echo $child->getLabel();?></span>
+                                </a>
+                            </li>
+                    <?php else:?>
+                            <li class="gui-folder<?php if ($child->isActive(true)) echo ' active expanded' ?>">
+                                <a href="javascript:void(0);">
+                                    <span class="title"><?php echo $child->getLabel();?></span>
+                                </a>
+
+                                <!--start submenu-->
+                                <ul>
+                        <?php foreach ($child->getPages() as $subChild): ?>
+                            <?php if($subChild->get('show_in_menu') !== false):?>
+                                    <li<?php if ($subChild->isActive()) echo ' class="active"' ?>>
+                                        <a href="<?php echo $subChild->getHref() ?>"><span class="title"><?php echo $subChild->getLabel();?></span></a>
+                                    </li>
+                            <?php endif;?>
+                        <?php endforeach; ?>
+                                </ul>
+                                <!--end /submenu-->
+                            </li>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+                        </ul>
+                    </li>
+        <?php endif; ?>
+                    <!-- END <?php echo strtoupper($page->getRoute());?> -->
+    <?php endif;?>
+<?php endforeach; ?>
+                </ul><!--end .main-menu -->

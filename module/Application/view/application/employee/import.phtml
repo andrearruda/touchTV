@@ -1,0 +1,74 @@
+<?php
+$this->headTitle('Colaboradores')->prepend('Importar');
+?>
+<script type="text/javascript" src="/assets/js/pages/employee.import.form.js"></script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $this->headTitle()->setSeparator(' / ')->renderTitle();?></h4>
+            </div>
+            <?php echo $this->form()->openTag($form->setAttribute('action', $this->url('employee/default', array('action' => 'import')))) . PHP_EOL; ?>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group<?php if($this->formElementErrors($form->get('monthCurrent'))):?> has-error<?php endif;?>">
+                            <?php echo $this->formElement($form->get('monthCurrent')) . PHP_EOL;?>
+                            <?php echo $this->formElementErrors()
+                                    ->setMessageOpenFormat('<span class="help-block">')
+                                    ->setMessageSeparatorString('</span><span class="help-block">')
+                                    ->setMessageCloseString('</span>')
+                                    ->render($form->get('monthCurrent')) . PHP_EOL; ?>
+                            <?php echo $this->formLabel($form->get('monthCurrent')) . PHP_EOL; ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group<?php if($this->formElementErrors($form->get('employeeUnit'))):?> has-error<?php endif;?>">
+                            <?php echo $this->formElement($form->get('employeeUnit')) . PHP_EOL;?>
+                            <?php echo $this->formElementErrors()
+                                    ->setMessageOpenFormat('<span class="help-block">')
+                                    ->setMessageSeparatorString('</span><span class="help-block">')
+                                    ->setMessageCloseString('</span>')
+                                    ->render($form->get('employeeUnit')) . PHP_EOL; ?>
+                            <?php echo $this->formLabel($form->get('employeeUnit')) . PHP_EOL; ?>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group<?php if($this->formElementErrors($form->get('fileExcel'))):?> has-error<?php endif;?>">
+                            <?php echo $this->formElement($form->get('fileExcel')) . PHP_EOL;?>
+                            <?php echo $this->formElementErrors()
+                                    ->setMessageOpenFormat('<span class="help-block">')
+                                    ->setMessageSeparatorString('</span><span class="help-block">')
+                                    ->setMessageCloseString('</span>')
+                                    ->render($form->get('fileExcel')) . PHP_EOL; ?>
+                            <?php echo $this->formLabel($form->get('fileExcel')) . PHP_EOL; ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="checkbox checkbox-inline checkbox-styled">
+                            <label>
+                                <?php echo $this->formElement($form->get('clearMonthCurrent')) . PHP_EOL;?>
+                                <span class="text-xs">Limpar registro do mês escolhido antes de importar.</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->form()->closeTag() . PHP_EOL; ?>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-raised bt_submit_form" data-dismiss="modal">Importar</button>
+                <button type="button" class="btn btn-default btn-raised" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

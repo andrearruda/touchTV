@@ -1,0 +1,61 @@
+<?php
+    $this->headLink()
+        ->prependStylesheet($this->basePath('/assets/css/activity.form.css'))
+        ->prependStylesheet($this->basePath('/assets/materialadmin/assets/css/theme-1/libs/bootstrap-datepicker/datepicker3.css'))
+    ;
+
+    $this->inlineScript()
+        ->appendFile($this->basePath('/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'))
+        ->appendFile($this->basePath('/assets/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js'))
+    ;
+?>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group<?php if($this->formElementErrors($form->get('label'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('label')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('label')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('label')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group<?php if($this->formElementErrors($form->get('title'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('title')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('title')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('title')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group<?php if($this->formElementErrors($form->get('text'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('text')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('text')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('text')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group<?php if($this->formElementErrors($form->get('image'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('image')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('image')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('image')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>

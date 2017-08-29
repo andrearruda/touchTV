@@ -1,0 +1,41 @@
+#load_modal .modal-header h4.modal-title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+#load_modal .modal-body .form {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#load_modal .modal-body .form .form-group .form-control{
+    display: block;
+    height: auto;
+}
+
+#load_modal .modal-body .form .form-group .form-control .img_show {
+    display: block;
+    margin-top: 10px;
+}
+
+#load_modal .modal-body .info{
+    background-color: #f5f5f5;
+    border: solid 1px #e2e2e2;
+    color: #969696;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+#load_modal .modal-body .info .info-head{
+    background-color: #e2e2e2;
+    padding: 10px;
+}
+
+#load_modal .modal-body .info .info-head h5{
+    margin: 0px;
+}
+
+#load_modal .modal-body .info .info-body{
+    padding: 10px;
+}

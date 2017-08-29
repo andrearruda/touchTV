@@ -1,0 +1,83 @@
+<?php
+$this->headTitle('Notícias')->prepend('Exibir');
+
+$data = array(
+    'title' => $entity->getTitle(),
+    'text' => $entity->getText(),
+    'image' => 'null'
+);
+
+if(!empty($entity->getImage()))
+{
+    $data['image'] = $this->basePath('upload/images/article/middle/' . $entity->getImage());
+}
+
+$flashVars = http_build_query($data);
+?>
+<script type="text/javascript">
+    $(function(){
+        $('#flashContent').flash(
+            {
+                swf: '<?php echo $this->basePath('/assets/swf/preview_common.swf');?>',
+                width: 868,
+                height: 488,
+                flashvars: <?php echo json_encode($data);?>,
+            }
+        );
+    });
+</script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $this->headTitle()->setSeparator(' / ')->renderTitle();?></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info">
+                            <div class="info-head">
+                                <h5>Controle</h5>
+                            </div>
+                            <div class="info-body">
+                                <span class="date">Criado em: <span><?php echo $this->dateFormat($entity->getCreatedAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'pt_BR');?></span></span> <br />
+                                <span class="date">Atualizado em: <span><?php echo $this->dateFormat($entity->getUpdatedAt(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'pt_BR');?></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info">
+                            <div class="info-head">
+                                <h5>Agendamento</h5>
+                            </div>
+                            <div class="info-body">
+                                <span class="date">Iniciando em: <span><?php echo $this->dateFormat($entity->getSchedulingStart(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'pt_BR');?></span></span> <br />
+                                <span class="date">Terminando em: <span><?php echo $this->dateFormat($entity->getSchedulingEnd(),  IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'pt_BR');?></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div id="flashContent">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-raised" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

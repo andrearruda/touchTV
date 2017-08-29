@@ -1,0 +1,52 @@
+<?php
+$this->headTitle('Registro');
+$this->headLink()->prependStylesheet($this->basePath('/assets/css/form_register.css'));
+
+$form = $this->registerForm;
+$form->prepare();
+?>
+
+<!-- BEGIN TITLE -->
+<?php echo $this->partial('partials/simple/title.phtml', array('title' => $this->headTitle()->setSeparator(' / ')->renderTitle())); ?>
+<!-- END TITLE -->
+
+<!-- BEGIN FORM -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="form_register">
+
+            <section>
+                <?php echo $this->form()->openTag($form) . PHP_EOL; ?>
+
+                <div class="form-group">
+                    <?php echo $this->formLabel($form->get('email')->setLabel('E-mail')->setLabelAttributes(array('class' => 'control-label col-md-3'))) . PHP_EOL; ?>
+                    <div class="col-md-9">
+                        <?php echo $this->formInput($form->get('email')->setAttributes(array('class' => 'form-control'))) . PHP_EOL; ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <?php echo $this->formLabel($form->get('password')->setLabel('Senha')->setLabelAttributes(array('class' => 'control-label col-md-3'))) . PHP_EOL; ?>
+                    <div class="col-md-9">
+                        <?php echo $this->formInput($form->get('password')->setAttributes(array('class' => 'form-control'))) . PHP_EOL; ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <?php echo $this->formLabel($form->get('passwordVerify')->setLabel('Confere senha')->setLabelAttributes(array('class' => 'control-label col-md-3'))) . PHP_EOL; ?>
+                    <div class="col-md-9">
+                        <?php echo $this->formInput($form->get('passwordVerify')->setAttributes(array('class' => 'form-control'))) . PHP_EOL; ?>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-default pull-right">Registrar</button>
+                    </div>
+                </div>
+                <?php echo $this->form()->closeTag() . PHP_EOL; ?>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- END FORM -->

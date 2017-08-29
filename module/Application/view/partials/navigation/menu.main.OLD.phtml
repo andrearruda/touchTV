@@ -1,0 +1,113 @@
+<?php
+/**
+ * @var $container Zend\Navigation\Navigation
+ * @var $page Zend\Navigation\Page\Mvc
+ */
+$container = $this->container;
+?>
+                <ul id="main-menu" class="gui-controls">
+<?php
+    foreach ($container as $page):
+        if($page->get('show_in_menu') !== false):
+            $label = $this->escapeHtml($this->translate($page->getLabel(), $this->navigation($container)->getTranslatorTextDomain()));
+            $hasChildren = $page->hasPages();
+?>
+                    <!-- BEGIN <?php echo strtoupper($page->getRoute());?> -->
+<?php
+            if (!$hasChildren):
+?>
+                    <li<?php if ($page->isActive()) echo ' class="active"'; ?>>
+                        <a href="<?php echo $page->getHref(); ?>"<?php if ($page->getTarget() != ""): ?> target="<?php echo $page->getTarget(); ?>" <?php endif; ?>>
+<?php
+                if ($page->get('icon') !== ''):
+?>
+                            <div class="gui-icon"><i class="<?php echo $page->get('icon'); ?>"></i></div>
+<?php
+                endif;
+?>
+                            <span class="title"><?php echo $label;?></span>
+                        </a>
+                    </li><!--end /menu-li -->
+<?php
+            else:
+?>
+<?php
+                //check if access is allowed at least one item
+                $access = false;
+                foreach ($page->getPages() as $child)
+                {
+                    if ($this->navigation()->accept($child) && $child->get("separator") !== true)
+                    {
+                        $access = true;
+                    }
+                }
+                if ($access) :
+?>
+                    <li class="gui-folder<?php if ($page->isActive(true)) echo ' active' ?>">
+                        <a href="<?php echo $page->get('uri'); ?>"<?php if ($page->getTarget() != ""): ?> target="<?php echo $page->getTarget(); ?>" <?php endif; ?>>
+<?php
+                    if ($page->get('icon') !== ''):
+?>
+                            <div class="gui-icon"><span class="<?php echo $page->get('icon'); ?>"></span></div>
+                            <span class="title"><?php echo $label;?></span>
+<?php
+                    endif;
+?>
+                        </a>
+                        <ul>
+<?php
+                    foreach ($page->getPages() as $child):
+                        if($child->get('show_in_menu') !== false):
+                            $label = $this->escapeHtml($this->translate($child->getLabel(),$this->navigation($container)->getTranslatorTextDomain()));
+                            $hasSubChildren = $child->hasPages();
+?>
+<?php
+                            if (!$hasSubChildren):
+?>
+                            <li<?php if ($child->isActive()) echo ' class="active"' ?>>
+                                <a href="<?php echo $child->getHref() ?>"<?php if ($child->getTarget() != ""): ?> target="<?php echo $child->getTarget(); ?>" <?php endif; ?>><?php echo $label;?></a>
+                            </li>
+<?php
+                            else:
+?>
+                            <li class="gui-folder<?php if ($child->isActive(true)) echo ' active' ?>">
+                                <a href="<?php echo $child->getHref() ?>"<?php if ($child->getTarget() != ""): ?> target="<?php echo $child->getTarget(); ?>" <?php endif; ?>><?php echo $label;?></a>
+                                <ul>
+
+<?php
+                                foreach ($child->getPages() as $subChild):
+                                    if($subChild->get('show_in_menu') !== false):
+                                        $label = $this->escapeHtml($this->translate($subChild->getLabel(),$this->navigation($container)->getTranslatorTextDomain()));
+?>
+                                    <li>
+                                        <a href="<?php echo $child->getHref() ?>"<?php if ($child->getTarget() != ""): ?> target="<?php echo $child->getTarget(); ?>" <?php endif; ?>><span class="title"><?php echo $label;?></span></a>
+                                    </li>
+<?php
+                                    endif;
+                                endforeach;
+?>
+                                </ul>
+                            </li>
+<?php
+                            endif;
+?>
+
+<?php
+                        endif;
+                    endforeach;
+?>
+                        </ul>
+                    </li>
+<?php
+                endif;
+?>
+<?php
+            endif;
+?>
+                    <!-- END <?php echo strtoupper($page->getRoute());?> -->
+
+<?php
+        endif;
+    endforeach;
+?>
+                </ul><!--end .main-menu -->

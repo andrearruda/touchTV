@@ -1,0 +1,67 @@
+<?php
+    $this->headLink()
+        ->prependStylesheet($this->basePath('/assets/materialadmin/assets/css/theme-1/libs/bootstrap-datepicker/datepicker3.css'));
+
+    $this->inlineScript()
+        ->appendFile($this->basePath('/assets/materialadmin/assets/js/libs/bootstrap-datepicker/bootstrap-datepicker.js'))
+        ->appendFile($this->basePath('/assets/materialadmin/assets/js/libs/bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js'))
+?>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group<?php if($this->formElementErrors($form->get('born_at'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('born_at')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('born_at')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('born_at')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group<?php if($this->formElementErrors($form->get('name'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('name')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('name')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('name')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group<?php if($this->formElementErrors($form->get('department'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('department')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('department')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('department')) . PHP_EOL; ?>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group<?php if($this->formElementErrors($form->get('employeeUnit'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('employeeUnit')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('employeeUnit')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('employeeUnit')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group<?php if($this->formElementErrors($form->get('image'))):?> has-error<?php endif;?>">
+            <?php echo $this->formElement($form->get('image')) . PHP_EOL;?>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('image')) . PHP_EOL; ?>
+            <?php echo $this->formLabel($form->get('image')) . PHP_EOL; ?>
+        </div>
+    </div>
+</div>
