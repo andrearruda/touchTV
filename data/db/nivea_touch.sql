@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Jul-2017 às 15:47
+-- Generation Time: 29-Ago-2017 às 15:52
 -- Versão do servidor: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,6 +42,14 @@ CREATE TABLE `activity` (
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `activity`
+--
+
+INSERT INTO `activity` (`id`, `label`, `title`, `text`, `image`, `active`, `scheduling_start`, `scheduling_end`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '123', '123', '123', 'img_59a5b356a89d95_06444547.png', 1, '2017-08-01 00:00:00', '2017-08-31 00:00:00', '2017-08-29 15:32:55', '2017-08-29 15:32:59', NULL),
+(2, '321', '321', '321', 'img_59a5b47c36ead6_01077707.jpg', 1, '2017-08-01 00:00:00', '2017-08-31 00:00:00', '2017-08-29 15:37:48', '2017-08-29 15:37:52', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +76,7 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`id`, `label`, `title`, `text`, `image`, `scheduling_start`, `scheduling_end`, `active`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'O que é Lorem Ipsum?', 'Lorem Ipsum é simplesmente uma simulação', 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.\r\n\r\nLorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.', 'img_57e937a5883ce.jpg', '2016-09-01 00:00:00', '2016-09-30 00:00:00', 1, '2016-09-26 10:35:25', '2016-09-26 11:58:45', NULL),
-(2, 'Porque nós o usamos?', 'É um fato conhecido de todos que um leitor', 'É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).', 'img_57f7cef09d7ce.jpg', '2016-10-01 00:00:00', '2016-10-31 00:00:00', 1, '2016-09-26 11:59:24', '2016-10-07 14:00:03', NULL);
+(2, 'Porque nós o usamos?', 'É um fato conhecido de todos que um leitor', 'É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de \"Conteúdo aqui, conteúdo aqui\", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por \'lorem ipsum\' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).', 'img_57f7cef09d7ce.jpg', '2017-08-01 00:00:00', '2017-08-31 00:00:00', 1, '2016-09-26 11:59:24', '2017-08-29 15:41:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -883,9 +891,10 @@ CREATE TABLE `warning` (
 INSERT INTO `warning` (`id`, `day_notice`, `title`, `text`, `image`, `active`, `scheduling_start`, `scheduling_end`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, '2016-09-01', 'O que é Lorem Ipsum?', 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.', 'img_57f7dce1ef773.jpg', 1, '2016-10-01 00:00:00', '2016-10-31 00:00:00', '2016-09-26 11:58:19', '2016-10-07 14:35:30', NULL),
 (2, '2016-11-01', 'Teste Norberto', 'Olá!\r\n\r\nNossa empresa conta com mais um novo Parceiro Corporativo, a FIA – FUNDAÇÃO INSTITUTO DE ADMINISTRAÇÃO.\r\n\r\nE o melhor, agora a FIA tem uma nova unidade na cidade de Campinas.\r\n\r\nBEIERSDORF e FIA, estimulando ainda mais o seu desenvolvimento!', 'img_5818a54c2e846.png', 0, '2016-11-01 00:00:00', '2016-11-01 00:00:00', '2016-11-01 12:23:09', '2016-11-01 12:23:09', NULL),
-(3, '2017-01-20', 'AUDIOMETRIAS 2017', 'Colaboradores, as audiometrias serão dia 24/02/2017 (sexta-feira.)\r\nPrimeiro turno: das 06:30h às 08:30h\r\nSegundo turno: das 13:30h às 15:30h', 'img_5890cba0453a0.jpg', 1, '2017-01-31 00:00:00', '2017-02-24 00:00:00', '2017-01-20 17:11:01', '2017-02-07 10:38:03', NULL),
-(4, '2017-02-07', 'Dream Big!', 'Você esta Preparado?', 'img_5899be78aa67d.jpg', 1, '2017-02-07 00:00:00', '2017-02-07 00:00:00', '2017-02-07 10:32:57', '2017-02-07 10:52:28', NULL),
-(5, '2017-06-06', 'Teste caracteres', 'O Jornal Estadão realiza anualmente o estudo chamado Marcas Mais. Com o objetivo de identificar as marcas que apresentam o melhor nível de envolvimento com seus consumidores, são realizados milhares de entrevistas em todo o território nacional. O estudo teve cobertura nacional, sendo a análise gerada a partir de um banco de dados, fruto de 11.500 entrevistas realizadas por método online com brasileiros de todo o País. Essa amostra pertence às classes sociais A, B e C do Critério Brasil, com homens e mulheres de diversas faixas etárias. \r\n\r\nNesse ano, no seguimento de Cosméticos, NIVEA foi destaque nas regiões Sul,  Norte e Centro-Oeste. Confira:\r\n\r\nSÃO PAULO\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      Mary Kay \r\n\r\n \r\n\r\nSUDESTE - EXCETO SP\r\n\r\n1.      Natura/O Boticário  \r\n\r\n2.      Mary Kay  \r\n\r\n3.      L\'Oréal \r\n\r\n \r\n\r\nSUL\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      NIVEA \r\n\r\n \r\n\r\nNORDESTE\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      Avon \r\n\r\nNORTE E CENTRO-OESTE\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      NIVEA/L\'Oréal \r\n\r\nO resultado foi bastante significativo para a marca do Grupo Beiersdorf, em um cenário no qual não basta ter apenas bom discurso, mas também apresentar valores e atitudes coerentes com a comunicação das empresas.\r\n\r\nPara mais detalhes sobre o ranking de cosméticos, clique no link:\r\n\r\nhttp://publicacoes.estadao.com.br/marcasmais2017/categorias/cosmeticos/  \r\n\r\nFonte: Estadão - SP', 'img_593703382fb09.jpg', 0, '2017-06-06 00:00:00', '2017-06-06 00:00:00', '2017-06-06 16:32:09', '2017-06-06 16:32:39', NULL);
+(3, '2017-07-26', 'AUDIOMETRIAS 2017', 'Colaboradores, as audiometrias serão dia 24/02/2017 (sexta-feira.)\r\nPrimeiro turno: das 06:30h às 08:30h\r\nSegundo turno: das 13:30h às 15:30h', 'img_5890cba0453a0.jpg', 1, '2017-08-01 00:00:00', '2017-08-31 00:00:00', '2017-01-20 17:11:01', '2017-08-29 14:49:56', NULL),
+(4, '2017-08-29', 'Dream Big!', 'Você esta Preparado?', 'img_5899be78aa67d.jpg', 1, '2017-08-01 00:00:00', '2017-08-31 00:00:00', '2017-02-07 10:32:57', '2017-08-29 14:47:30', NULL),
+(5, '2017-06-06', 'Teste caracteres', 'O Jornal Estadão realiza anualmente o estudo chamado Marcas Mais. Com o objetivo de identificar as marcas que apresentam o melhor nível de envolvimento com seus consumidores, são realizados milhares de entrevistas em todo o território nacional. O estudo teve cobertura nacional, sendo a análise gerada a partir de um banco de dados, fruto de 11.500 entrevistas realizadas por método online com brasileiros de todo o País. Essa amostra pertence às classes sociais A, B e C do Critério Brasil, com homens e mulheres de diversas faixas etárias. \r\n\r\nNesse ano, no seguimento de Cosméticos, NIVEA foi destaque nas regiões Sul,  Norte e Centro-Oeste. Confira:\r\n\r\nSÃO PAULO\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      Mary Kay \r\n\r\n \r\n\r\nSUDESTE - EXCETO SP\r\n\r\n1.      Natura/O Boticário  \r\n\r\n2.      Mary Kay  \r\n\r\n3.      L\'Oréal \r\n\r\n \r\n\r\nSUL\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      NIVEA \r\n\r\n \r\n\r\nNORDESTE\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      Avon \r\n\r\nNORTE E CENTRO-OESTE\r\n\r\n1.      O Boticário  \r\n\r\n2.      Natura  \r\n\r\n3.      NIVEA/L\'Oréal \r\n\r\nO resultado foi bastante significativo para a marca do Grupo Beiersdorf, em um cenário no qual não basta ter apenas bom discurso, mas também apresentar valores e atitudes coerentes com a comunicação das empresas.\r\n\r\nPara mais detalhes sobre o ranking de cosméticos, clique no link:\r\n\r\nhttp://publicacoes.estadao.com.br/marcasmais2017/categorias/cosmeticos/  \r\n\r\nFonte: Estadão - SP', 'img_593703382fb09.jpg', 0, '2017-06-06 00:00:00', '2017-06-06 00:00:00', '2017-06-06 16:32:09', '2017-06-06 16:32:39', NULL),
+(6, '2017-08-29', 'Lorem Ipsum é simplesmente uma simulação de t', 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.', 'img_5978a9064bb81.jpg', 1, '2017-08-01 00:00:00', '2017-08-31 00:00:00', '2017-07-26 11:36:55', '2017-08-29 14:46:44', NULL);
 
 --
 -- Indexes for dumped tables
@@ -980,7 +989,7 @@ ALTER TABLE `warning`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `article`
 --
@@ -1030,7 +1039,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `warning`
 --
 ALTER TABLE `warning`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
