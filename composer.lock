@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb1deae96da86d63a83282debdaa4d63",
+    "content-hash": "f26b8612bf8bfb49279fafa0448b06d8",
     "packages": [
         {
             "name": "adaoex/zf2-excel",
@@ -2836,51 +2836,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2017-07-29T21:54:42+00:00"
-        },
-        {
-            "name": "thapp/xmlbuilder",
-            "version": "v0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/iwyg/xmlbuilder.git",
-                "reference": "6b69b02d0634ac6182c12f47de18c2703b05c449"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/iwyg/xmlbuilder/zipball/6b69b02d0634ac6182c12f47de18c2703b05c449",
-                "reference": "6b69b02d0634ac6182c12f47de18c2703b05c449",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.7"
-            },
-            "require-dev": {
-                "mockery/mockery": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Thapp": "src/"
-                },
-                "classmap": [
-                    "tests/"
-                ],
-                "files": [
-                    "src/includes/helper.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "iwyg",
-                    "email": "mail@thomas-appel.com"
-                }
-            ],
-            "description": "Xmlbuilder utilitity",
-            "time": "2013-10-15T17:50:56+00:00"
         },
         {
             "name": "webmozart/assert",

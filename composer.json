@@ -14,7 +14,6 @@
         "gedmo/doctrine-extensions": "^2.4",
         "imagine/imagine": "^0.6.3",
         "manuakasam/sam-user": "dev-master",
-        "thapp/xmlbuilder": "^0.1.4",
         "beberlei/DoctrineExtensions": "^1.0",
         "danielstjules/stringy": "~2.1",
         "jdorn/file-system-cache": "dev-master",
